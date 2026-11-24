@@ -1,6 +1,9 @@
+import Link from "next/link";
+
+
 export default function Home() {
   return (
-    <main className="relative min-h-screen overflow-hidden bg-gradient-to-br from-sky-50 via-sky-100 to-blue-200">
+    <main className="relative min-h-screen overflow-hidden bg-linear-to-br from-sky-50 via-sky-100 to-blue-200">
       {/* Decorative background blobs */}
       <div className="pointer-events-none absolute -left-24 -top-24 h-72 w-72 rounded-full bg-sky-300/40 blur-3xl" />
       <div className="pointer-events-none absolute -bottom-28 right-0 h-80 w-80 rounded-full bg-blue-300/40 blur-3xl" />
@@ -8,6 +11,7 @@ export default function Home() {
       <section className="relative mx-auto flex min-h-screen max-w-6xl flex-col items-center justify-center gap-12 px-6 py-12 md:flex-row md:justify-between md:px-10">
         {/* Left: hero content */}
         <aside className="max-w-xl">
+        <Link href={''}>
           <button
             className="inline-flex items-center gap-2 rounded-full border-2 border-blue-600 bg-transparent px-6 py-2.5 text-sm font-semibold text-blue-600
                        transition-all duration-200 ease-out
@@ -17,6 +21,7 @@ export default function Home() {
           >
             AI Prompt Marketplace
           </button>
+        </Link>
 
           <div className="mt-6 space-y-4">
             <h1 className="font-mono text-4xl font-bold leading-tight text-gray-800 md:text-5xl">
@@ -32,6 +37,7 @@ export default function Home() {
 
           <div className="mt-8 flex flex-wrap gap-4">
             {/* Primary */}
+            <Link  href={'/prompts'}>
             <button
               className="rounded-lg border-2 border-gray-700 bg-gray-700 px-6 py-2.5 text-base font-semibold text-white
                          transition-all duration-200 ease-out
@@ -41,8 +47,10 @@ export default function Home() {
             >
               Browse Prompts
             </button>
+              </Link>
 
             {/* Ghost */}
+           <Link href={'/prompts/add'}>
             <button
               className="rounded-lg border-2 border-gray-700 bg-transparent px-6 py-2.5 text-base font-semibold text-gray-700
                          transition-all duration-200 ease-out
@@ -52,6 +60,7 @@ export default function Home() {
             >
               Add Prompt
             </button>
+           </Link>
           </div>
         </aside>
 

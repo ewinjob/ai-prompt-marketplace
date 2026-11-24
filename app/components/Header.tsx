@@ -38,10 +38,10 @@ export default function Header() {
         <NavbarLink href="/prompts" className={solid}>
           Browse Prompts
         </NavbarLink>
-        <NavbarLink href="/collection" className={solid}>
+        <NavbarLink href="/prompts/saved" className={solid}>
           Collection
         </NavbarLink>
-        <NavbarLink href="/add" className={solid}>
+        <NavbarLink href="/prompts/add" className={solid}>
           Add Prompt
         </NavbarLink>
       </NavbarCollapse>
