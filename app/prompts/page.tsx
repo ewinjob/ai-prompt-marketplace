@@ -6,8 +6,6 @@ export default function Prompts() {
   return (
     <>
     <main className="bg-linear-to-br from-sky-50 via-sky-100 to-blue-200 min-h-screen">
-                <div className="pointer-events-none absolute -left-24 -top-24 h-72 w-72 rounded-full bg-sky-300/40 blur-3xl" />
-      <div className="pointer-events-none absolute -bottom-28 right-0 h-80 w-80 rounded-full bg-blue-300/40 blur-3xl" />
       <section className=" flex justify-center items-center pt-20 px-10 min-screen">
         <div className="border-2 border-sky-800 shadow-2xl bg-sky-100 rounded-3xl w-full  h-50">
          <div className="flex justify-between items-center">
