@@ -1,8 +1,13 @@
-import Link from "next/link"
+"use client"
 
+import Link from "next/link"
+import { useState } from "react";
+import { FiSearch, FiChevronDown } from "react-icons/fi";
 
 
 export default function Prompts() {
+    const [active, setActive] = useState("All");
+    const filters = ["All", "Popular", "Newest", "Free", "Saved"];
   return (
     <>
     <main className="bg-linear-to-br from-sky-50 via-sky-100 to-blue-200 min-h-screen">
@@ -37,33 +42,64 @@ export default function Prompts() {
         </div>
       </section>
 
-      <section className="flex justify-center items-center gap-10 my-20">
-  <div>
-    <input
-      className="w-60 px-6 py-3 rounded-full bg-sky-300 text-sky-950 font-medium placeholder-sky-800/70 shadow-md outline-none transition hover:bg-sky-200 focus:bg-sky-100 focus:ring-4 focus:ring-sky-400/40"
-      type="text"
-      placeholder="Search by title"
-    />
-  </div>
-  <div>
-    <input
-      className="w-60 px-6 py-3 rounded-full bg-sky-300 text-sky-950 font-medium placeholder-sky-800/70 shadow-md outline-none transition hover:bg-sky-200 focus:bg-sky-100 focus:ring-4 focus:ring-sky-400/40"
-      type="text"
-      placeholder="All category"
-    />
-  </div>
-  <div>
-<select
-  name=""
-  id=""
-  className="w-44 appearance-none px-6 py-3 rounded-full bg-sky-100 text-sky-950 font-medium shadow-md outline-none cursor-pointer transition hover:bg-sky-200 focus:bg-sky-100 focus:ring-4 focus:ring-sky-400/40"
->
-  <option value="chatGPT">chatGPT</option>
-  <option value="claude">claude</option>
-  <option value="gemini">gemini</option>
-</select>
-  </div>
-</section>
+       
+        <section className="mx-auto my-20 flex w-full max-w-3xl flex-col gap-4 rounded-3xl border border-slate-200 bg-white p-4 shadow-lg shadow-slate-200/60 sm:flex-row sm:items-center">
+      {/* Search + buttons */}
+      <div className="flex w-full flex-1 flex-col gap-3">
+        <div className="group relative w-full">
+          <FiSearch
+            className="pointer-events-none absolute left-5 top-1/2 -translate-y-1/2 text-slate-400 transition-colors group-focus-within:text-sky-600"
+            size={18}
+          />
+          <input
+            type="text"
+            placeholder="Search by title..."
+            className="w-full rounded-full border border-slate-300 bg-transparent py-3 pl-12 pr-5 font-medium text-slate-800 placeholder-slate-400 outline-none transition hover:border-slate-400 hover:bg-slate-50 focus:border-sky-500 focus:bg-sky-50/40 focus:ring-4 focus:ring-sky-500/15"
+          />
+        </div>
+
+        <div className="flex flex-wrap gap-2 px-1">
+          {filters.map((item) => (
+            <button
+              key={item}
+              type="button"
+              onClick={() => setActive(item)}
+              className={`rounded-full border px-4 py-1.5 text-sm font-medium transition focus:outline-none focus-visible:ring-4 focus-visible:ring-sky-500/15 ${
+                active === item
+                  ? "border-sky-500 bg-sky-50 text-sky-700"
+                  : "border-slate-300 bg-transparent text-slate-600 hover:border-slate-400 hover:bg-slate-50"
+              }`}
+            >
+              {item}
+            </button>
+          ))}
+        </div>
+      </div>
+
+     
+      <div className="hidden h-16 w-px bg-slate-200 sm:block" />
+
+      
+      <div className="group relative w-full sm:w-52">
+        <select className="w-full cursor-pointer appearance-none rounded-full border border-slate-300 bg-transparent py-3 pl-6 pr-12 font-medium text-slate-700 outline-none transition hover:border-slate-400 hover:bg-slate-50 focus:border-sky-500 focus:bg-sky-50/40 focus:ring-4 focus:ring-sky-500/15">
+          <option value="all">All Category</option>
+          <option value="chatgpt">ChatGPT</option>
+          <option value="claude">Claude</option>
+          <option value="gemini">Gemini</option>
+        </select>
+        <FiChevronDown
+          className="pointer-events-none absolute right-5 top-1/2 -translate-y-1/2 text-slate-400 transition-colors group-focus-within:text-sky-600"
+          size={18}
+        />
+      </div>
+    </section>
+         
+
+          <section>
+            <div>
+
+            </div>
+          </section>
 
     </main>
     </>
