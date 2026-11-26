@@ -1,6 +1,5 @@
 import { connectionDB } from "@/lib/db";
 import Prompt from "@/models/prompt";
-
 import { NextRequest,NextResponse } from "next/server";
 
  
@@ -22,11 +21,34 @@ export async function GET(request:NextRequest,{params}:{params:Promise<{id:Strin
 
     }catch(err){
         return NextResponse.json({
-        message:"error while getting prompt",err
+        message:"error while getting prompt"+err
     },{status:500})
     }
 }
 
+// edit 
+export async function PUT(request:NextRequest,{params}:{params:Promise<{id:String}>}){
+    try{
+
+        await connectionDB()
+        const reqBody = await request.json()
+        const {id}=await params;
+        console.log(id);
+        
+        const updatePrompt = await Prompt.findByIdAndUpdate(id,reqBody);
+        console.log(updatePrompt);
+
+        return NextResponse.json({
+            message:"successfully updated",updatePrompt
+        },{status:200})
+        
+
+    }catch(err){
+                 return NextResponse.json({
+        message:"error while updating"+err
+    },{status:500})
+    }
+}
 
 
 // delete prompt

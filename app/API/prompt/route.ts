@@ -16,7 +16,7 @@ export async function GET(request:NextRequest){
    },{status:200})
    }catch(err){
     return NextResponse.json({
-        message:"error while getting prompt",err
+        message:"error while getting prompt"+err
     },{status:500})
    }
 }
