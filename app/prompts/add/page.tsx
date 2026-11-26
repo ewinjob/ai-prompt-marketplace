@@ -60,7 +60,7 @@ export default function Add() {
           <input
             type="text"
             disabled
-            className="w-full px-4 py-4 rounded-xl border-2 border-sky-600 bg-sky-300 text-sky-950 font-medium placeholder-sky-800 shadow-md outline-none transition hover:bg-sky-200 focus:bg-sky-100 focus:ring-4 focus:ring-sky-400/40"
+            className="w-full px-4 py-4 rounded-xl border-2 border-sky-600 bg-sky-200 text-sky-950 font-medium placeholder-sky-800 shadow-md outline-none transition hover:bg-sky-200 focus:bg-sky-100 focus:ring-4 focus:ring-sky-400/40"
             placeholder="Example: Create social media post for a SaaS launch with a friendly tone, three benefits and a call to action."
           />
         </div>

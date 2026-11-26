@@ -53,19 +53,26 @@ export default function Saved() {
       </section>
 
 
-        <section>
-          <div>
-            { 
-              card.map((item)=>(
-                <div>
-                  <div>{item.no}</div>
-                <div>{item.name}</div>
-                <div>{item.address}</div>
-                </div>
-              ))
-            }
-          </div>
-        </section>
+       <section className="px-6 py-10">
+  <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+    {card.map((item) => (
+      <div
+        key={item.no}
+        className="group rounded-xl shadow-2xl border border-gray-300 bg-transparent p-6 transition duration-300 hover:border-gray-900 hover:bg-gray-900/5"
+      >
+        <div className="mb-4 text-4xl font-bold text-gray-300 transition group-hover:text-gray-900">
+          {item.no}
+        </div>
+        <div className="mb-2 text-lg font-semibold text-gray-900">
+          {item.name}
+        </div>
+        <div className="text-sm text-gray-500">
+          {item.address}
+        </div>
+      </div>
+    ))}
+  </div>
+</section>
 
 
     </main>
