@@ -1,13 +1,38 @@
 "use client"
 
+import axios from "axios";
 import Link from "next/link"
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FiSearch, FiChevronDown } from "react-icons/fi";
+import PromptCard from "../components/PromptCard";
+
 
 
 export default function Prompts() {
     const [active, setActive] = useState("All");
     const filters = ["All", "Popular", "Newest", "Free", "Saved"];
+
+    const [prompt,setPrompt]=useState([])
+
+
+    const getAllPrompts=async()=>{
+      try{
+
+        const res = await axios.get('/API/prompt')
+        console.log(res.data.allPrompts);
+        setPrompt(res.data.allPrompts)
+        
+
+      }catch(err){
+        console.log(err);
+        
+      }
+    }
+
+    useEffect(()=>{
+      getAllPrompts()
+    },[])
+
   return (
     <>
     <main className="bg-linear-to-br from-sky-50 via-sky-100 to-blue-200 min-h-screen">
@@ -97,7 +122,7 @@ export default function Prompts() {
 
           <section>
             <div>
-
+                  <PromptCard allPrompts={prompt}/>
             </div>
           </section>
 

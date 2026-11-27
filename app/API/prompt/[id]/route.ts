@@ -26,6 +26,7 @@ export async function GET(request:NextRequest,{params}:{params:Promise<{id:Strin
     }
 }
 
+
 // edit 
 export async function PUT(request:NextRequest,{params}:{params:Promise<{id:String}>}){
     try{
@@ -35,7 +36,7 @@ export async function PUT(request:NextRequest,{params}:{params:Promise<{id:Strin
         const {id}=await params;
         console.log(id);
         
-        const updatePrompt = await Prompt.findByIdAndUpdate(id,reqBody);
+        const updatePrompt = await Prompt.findByIdAndUpdate(id,reqBody,{new:true});
         console.log(updatePrompt);
 
         return NextResponse.json({
@@ -46,6 +47,29 @@ export async function PUT(request:NextRequest,{params}:{params:Promise<{id:Strin
     }catch(err){
                  return NextResponse.json({
         message:"error while updating"+err
+    },{status:500})
+    }
+}
+
+
+// favorite
+export async function PATCH(request:NextRequest,{params}:{params:Promise<{id:String}>}){
+    try{
+
+        await connectionDB()
+        const {id}=await params;
+        console.log(id);
+        const reqBody=await request.json()
+
+        const favoritePrompt = await Prompt.findByIdAndUpdate(id,{favorite:reqBody.favorite},{new:true})
+        return NextResponse.json({
+            message:"favorite added true",favoritePrompt
+        })
+        
+
+    }catch(err){
+        return NextResponse.json({
+        message:"error while favouring"+err
     },{status:500})
     }
 }
